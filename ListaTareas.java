@@ -19,10 +19,7 @@ public class ListaTareas
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return the sum of x and y 
+     * Añadimos una tarea con un nombre dado por el usuario 
      */
     public void annadirTarea(String nombreTarea)
     {
@@ -30,4 +27,23 @@ public class ListaTareas
         listaTareas.add(nuevaTarea);
         
     }
+    
+    /**
+     *Muestra todas las tareas existentes numeradas empezando en 1 
+     *pudiendo ver si estan completadas o no
+     */
+    public void mostrarTareas()
+    {
+        int contador = 0;
+        while(contador < listaTareas.size()){
+            
+            System.out.println((contador + 1) + " - " + listaTareas.get(contador).getNombreTarea()
+             + " " + listaTareas.get(contador).getTerminada());   
+            contador++;
+
+        }
+    } 
+    
+    
+    
 }

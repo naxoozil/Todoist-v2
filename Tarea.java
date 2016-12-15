@@ -16,6 +16,22 @@ public class Tarea
     public Tarea(String nombreTarea)
     {
         this.nombreTarea = nombreTarea;
-        
+        terminada = false;
     }
+    
+    public boolean getTerminada()
+    {
+        return terminada;
+    }
+    
+    public String getNombreTarea()
+    {
+        return nombreTarea;
+    }
+    
+    public void setTareaFinalizada()
+    {
+        terminada = !terminada;
+    }
+    
 }
