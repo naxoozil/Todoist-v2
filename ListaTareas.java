@@ -70,13 +70,15 @@ public class ListaTareas
         int contador = 0;
         int numeroDeTareasEnTexto = 0; //Creo una variable para llevar la cuenta de las tareas que coinciden
         while(contador < getNumeroTareas()){
-            if(listaTareas.get(contador).getTerminada() == true){
-                System.out.println((contador + 1) + " - Hecho - " + listaTareas.get(contador).getNombreTarea());
-                numeroDeTareasEnTexto++;
-            }
-            else{
-                System.out.println((contador + 1) + " - "+ listaTareas.get(contador).getNombreTarea());
-                numeroDeTareasEnTexto++;
+            if(listaTareas.get(contador).getNombreTarea().contains(comprobadorDeTexto) == true){
+                if(listaTareas.get(contador).getTerminada() == true){
+                    System.out.println((contador + 1) + " - Hecho - " + listaTareas.get(contador).getNombreTarea());
+                    numeroDeTareasEnTexto++;
+                }
+                else{
+                    System.out.println((contador + 1) + " - "+ listaTareas.get(contador).getNombreTarea());
+                    numeroDeTareasEnTexto++;
+                }
             }
             contador++;
         }
