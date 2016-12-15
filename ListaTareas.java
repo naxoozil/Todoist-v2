@@ -44,6 +44,45 @@ public class ListaTareas
         }
     } 
     
+    public int getNumeroTareas()
+    {
+        return listaTareas.size();
+    }
+    
+    /**
+     * Marcamos una tarea como completada si no esta hecha(false)
+     */
+    public void marcarComoCompletada(int posicion)
+    {
+        if(posicion > 0 && posicion <= listaTareas.size()) 
+        {
+            if(listaTareas.get(posicion - 1).getTerminada() == false){
+                listaTareas.get(posicion - 1).setTareaFinalizada();
+            }
+        }
+    }
+    
+    public void mostrarTareasCoincidentes(String comprobadorDeTexto)
+    {
+        int contador = 0;
+        int numeroDeTareasEnTexto = 0; //Creo una variable para llevar la cuenta de las tareas que coinciden
+
+        while(contador < getNumeroTareas()){
+            if(listaTareas.get(contador).getNombreTarea().contains(comprobadorDeTexto)){
+                System.out.println(contador + "- " + listaTareas.get(contador).getNombreTarea());   
+                numeroDeTareasEnTexto = numeroDeTareasEnTexto + 1;   //Aumento el contador si encuentra una tarea igual
+            }
+            contador++;
+        }
+
+        if(numeroDeTareasEnTexto == 0){
+            System.out.println("Error, no hay tarea con esa busqueda");    //Sino hay ninguna tarea con ese nombre, no muestra nada    
+        }
+        else
+        {
+            System.out.println( numeroDeTareasEnTexto +" tareas encontradas con el texto " + comprobadorDeTexto);
+        }
+    }
     
     
 }
