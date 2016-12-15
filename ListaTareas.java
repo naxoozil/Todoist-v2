@@ -36,11 +36,13 @@ public class ListaTareas
     {
         int contador = 0;
         while(contador < listaTareas.size()){
-            
-            System.out.println((contador + 1) + " - " + listaTareas.get(contador).getNombreTarea()
-             + " " + listaTareas.get(contador).getTerminada());   
+            if(listaTareas.get(contador).getTerminada() == true){
+                System.out.println((contador + 1) + " - Hecho - " + listaTareas.get(contador).getNombreTarea());
+            }
+            else{
+                System.out.println((contador + 1) + " - "+ listaTareas.get(contador).getNombreTarea());
+            }
             contador++;
-
         }
     } 
     
@@ -56,21 +58,25 @@ public class ListaTareas
     {
         if(posicion > 0 && posicion <= listaTareas.size()) 
         {
-            if(listaTareas.get(posicion - 1).getTerminada() == false){
-                listaTareas.get(posicion - 1).setTareaFinalizada();
-            }
+            listaTareas.get(posicion - 1).setTareaFinalizada();
         }
     }
     
+    /**
+     * Muestra las tareas coincidentes a partir de un texto dado por el usuario
+     */
     public void mostrarTareasCoincidentes(String comprobadorDeTexto)
     {
         int contador = 0;
         int numeroDeTareasEnTexto = 0; //Creo una variable para llevar la cuenta de las tareas que coinciden
-
         while(contador < getNumeroTareas()){
-            if(listaTareas.get(contador).getNombreTarea().contains(comprobadorDeTexto)){
-                System.out.println(contador + "- " + listaTareas.get(contador).getNombreTarea());   
-                numeroDeTareasEnTexto = numeroDeTareasEnTexto + 1;   //Aumento el contador si encuentra una tarea igual
+            if(listaTareas.get(contador).getTerminada() == true){
+                System.out.println((contador + 1) + " - Hecho - " + listaTareas.get(contador).getNombreTarea());
+                numeroDeTareasEnTexto++;
+            }
+            else{
+                System.out.println((contador + 1) + " - "+ listaTareas.get(contador).getNombreTarea());
+                numeroDeTareasEnTexto++;
             }
             contador++;
         }
@@ -78,11 +84,16 @@ public class ListaTareas
         if(numeroDeTareasEnTexto == 0){
             System.out.println("Error, no hay tarea con esa busqueda");    //Sino hay ninguna tarea con ese nombre, no muestra nada    
         }
-        else
-        {
+        else{
             System.out.println( numeroDeTareasEnTexto +" tareas encontradas con el texto " + comprobadorDeTexto);
         }
     }
     
+    public void removerTarea(int posicion)
+    {
+        if(posicion > 0 && posicion <= listaTareas.size()){ 
+            listaTareas.remove(posicion - 1);
+        }
+    }
     
 }

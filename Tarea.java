@@ -31,7 +31,7 @@ public class Tarea
     
     public void setTareaFinalizada()
     {
-        terminada = !terminada;
+        terminada = true;
     }
     
 }
